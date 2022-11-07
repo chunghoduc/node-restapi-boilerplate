@@ -1,19 +1,19 @@
 const express = require('express');
-const auth = require('../../middlewares/auth');
-const validate = require('../../middlewares/validate');
-const userValidation = require('../../validations/user.validation');
-const userController = require('../../controllers/user.controller');
+// const auth = require('../../middlewares/auth');
+// const validate = require('../../middlewares/validate');
+// const userValidation = require('../../validations/user.validation');
+const userController = require('../../controllers/usercontroller');
 
 const router = express.Router();
 
 router
   .route('/')
-  .post(validate(userValidation.createUser), userController.createUser)
-  .get(validate(userValidation.getUsers), userController.getUsers);
+  .post(userController.createUser)
+  .get(userController.getUsers);
 
 router
   .route('/:userId')
-  .get(validate(userValidation.getUser), userController.getUser)
+  .get(userController.getUser)
 
 module.exports = router;
 
